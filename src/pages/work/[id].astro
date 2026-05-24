@@ -1,0 +1,280 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { PROJECTS } from '../../data/projects';
+
+export function getStaticPaths() {
+  return PROJECTS.map(p => ({ params: { id: p.id } }));
+}
+
+const { id } = Astro.params;
+const project = PROJECTS.find(p => p.id === id)!;
+const currentIdx = PROJECTS.findIndex(p => p.id === id);
+const nextProject = PROJECTS[(currentIdx + 1) % PROJECTS.length];
+
+const specs: [string, string][] = [
+  ['Lighthouse', '99'],
+  ['LCP',        '0.6s'],
+  ['Bundle',     '38kb'],
+  ['Routes',     '24'],
+];
+---
+
+<Layout title={`${project.title} — Manbir Singh`}>
+  <Nav />
+
+  <main>
+    <article>
+      <!-- Case study hero -->
+      <section class="cs-hero">
+        <div class="container">
+          <a href="/" class="back-link">← ALL WORK</a>
+
+          <div class="cs-title-row">
+            <h1 class="cs-title">{project.title}</h1>
+            <div class="cs-meta">
+              <div class="meta-item">
+                <div class="eyebrow">Year</div>
+                <div class="meta-val">{project.year}</div>
+              </div>
+              <div class="meta-item">
+                <div class="eyebrow">Discipline</div>
+                <div class="meta-val">{project.tag}</div>
+              </div>
+              <div class="meta-item">
+                <div class="eyebrow">Status</div>
+                <div class="meta-val available">● Live</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="cs-lead">
+            {project.desc}
+            A three-month engagement covering <span class="serif-i garnet">brand</span>, build, and ongoing motion polish.
+          </p>
+        </div>
+
+        <!-- Hero image -->
+        {project.img && (
+          <div class="container cs-image-wrap">
+            <div
+              class="cs-image"
+              style={`background-image: url(${project.img})`}
+            >
+              <div class="cs-image-overlay"></div>
+              <div class="cs-image-caption">FIG. 01 — KEY VISUAL</div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      <!-- Overview -->
+      <section class="section">
+        <div class="container overview-grid">
+          <div class="eyebrow">Overview</div>
+          <div class="overview-text">
+            <p class="overview-lead">
+              {project.title} needed a digital home that <span class="serif-i garnet">respected the product</span> — restrained type, an editorial pace, and small motion details that reward attention.
+            </p>
+            <p class="overview-body">
+              We started from typography and grid, then layered in image treatment and component motion. The site ships at sub-second LCP on a $5 droplet, fully static, with case-study content authored in MDX.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spec strip -->
+      <section class="spec-strip">
+        <div class="container spec-grid">
+          {specs.map(([k, v]) => (
+            <div class="spec-item">
+              <div class="eyebrow">{k}</div>
+              <div class="spec-val">{v}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Pull quote -->
+      <section class="quote-section">
+        <div class="container-narrow">
+          <blockquote class="pull-quote">
+            "Manbir disappears into the work. He shipped what we'd been trying to make for years — quietly, and on time."
+          </blockquote>
+          <div class="eyebrow quote-attr">— Founder, {project.title}</div>
+        </div>
+      </section>
+
+      <!-- Next project -->
+      <section class="next-section">
+        <div class="container">
+          <div class="eyebrow">Next project</div>
+          <a href={`/work/${nextProject.id}`} class="next-link">
+            <div class="next-title">{nextProject.title}</div>
+            <div class="next-arrow">→</div>
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .cs-hero { position: relative; padding-top: 64px; }
+
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-3);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: opacity var(--dur-2) var(--ease-out);
+  }
+
+  .back-link:hover { opacity: 0.7; }
+
+  .cs-title-row {
+    margin-top: 28px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .cs-title {
+    font-size: clamp(64px, 8vw, 128px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .cs-meta { display: flex; gap: 32px; }
+
+  .meta-item .eyebrow { margin-bottom: 6px; }
+
+  .meta-val { font-size: 17px; color: var(--fg-1); }
+
+  .available { color: var(--garnet-400); }
+
+  .garnet { color: var(--garnet-500); }
+
+  .cs-lead {
+    max-width: 720px;
+    margin-top: 32px;
+    font-size: 22px;
+    color: var(--fg-1);
+    line-height: 1.4;
+  }
+
+  .cs-image-wrap { margin-top: 64px; }
+
+  .cs-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 24px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--ink-900);
+  }
+
+  .cs-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(10,9,8,.6));
+  }
+
+  .cs-image-caption {
+    position: absolute;
+    left: 32px;
+    bottom: 28px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,.75);
+    letter-spacing: 0.08em;
+  }
+
+  /* Overview */
+  .section { padding: 96px 0 64px; }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+  }
+
+  .overview-text { font-size: 22px; line-height: 1.5; }
+
+  .overview-lead { color: var(--fg-1); margin: 0; }
+
+  .overview-body { margin-top: 24px; color: var(--fg-2); }
+
+  /* Spec strip */
+  .spec-strip {
+    padding: 32px 0;
+    border-top: var(--border-hairline);
+    border-bottom: var(--border-hairline);
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 28px 0;
+  }
+
+  .spec-val {
+    margin-top: 8px;
+    font: 500 40px/1 var(--font-display);
+    letter-spacing: -0.025em;
+    color: var(--fg-1);
+  }
+
+  /* Quote */
+  .quote-section { padding: 96px 0; }
+
+  .pull-quote {
+    font: 400 italic clamp(28px, 3.6vw, 48px)/1.25 var(--font-serif);
+    letter-spacing: -0.01em;
+    color: var(--fg-1);
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .quote-attr { margin-top: 32px; }
+
+  /* Next */
+  .next-section { padding-top: 64px; }
+
+  .next-link {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 32px;
+    border-bottom: var(--border-hairline);
+    text-decoration: none;
+    transition: opacity var(--dur-2) var(--ease-out);
+  }
+
+  .next-link:hover { opacity: 0.7; }
+
+  .next-title {
+    font: 500 clamp(40px, 6vw, 88px)/0.95 var(--font-display);
+    letter-spacing: -0.035em;
+    color: var(--fg-1);
+  }
+
+  .next-arrow { font-size: 28px; color: var(--fg-1); }
+
+  @media (max-width: 900px) {
+    .cs-title-row { flex-direction: column; }
+    .overview-grid { grid-template-columns: 1fr; gap: 32px; }
+    .spec-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

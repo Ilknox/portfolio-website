@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact — Manbir Singh">
+  <Nav current="contact" />
+
+  <main>
+    <section class="contact-section">
+      <div class="container contact-grid">
+
+        <!-- Left: info -->
+        <div>
+          <div class="eyebrow">Contact</div>
+          <h1 class="contact-heading">
+            Let's build something <span class="serif-i garnet">worth shipping.</span>
+          </h1>
+          <p class="contact-lead">
+            I take on 4–6 engagements a year. Tell me a little about your project — I respond to every note within two business days.
+          </p>
+
+          <div class="info-table">
+            {[
+              ['Email',        'hi@manbir.dev'],
+              ['Calendar',     'Book a 30-minute intro ↗'],
+              ['Location',     'Toronto, ON · open to remote'],
+              ['Next opening', 'Q3 2026'],
+            ].map(([k, v]) => (
+              <div class="info-row">
+                <div class="eyebrow">{k}</div>
+                <div class="info-val">{v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <form class="glass contact-form" id="contact-form" novalidate>
+          <!-- Success state (hidden by default) -->
+          <div class="form-success" id="form-success" hidden>
+            <div class="eyebrow success-eyebrow">● Sent</div>
+            <div class="success-heading">Thanks — I'll reply within two business days.</div>
+            <button type="button" class="reset-btn" id="reset-btn">← SEND ANOTHER</button>
+          </div>
+
+          <!-- Form fields -->
+          <div class="form-fields" id="form-fields">
+            <label class="field">
+              <span class="eyebrow">Name</span>
+              <input type="text" placeholder="Your name" name="name" required />
+            </label>
+
+            <label class="field">
+              <span class="eyebrow">Email</span>
+              <input type="email" placeholder="you@domain.com" name="email" required />
+            </label>
+
+            <label class="field">
+              <span class="eyebrow">Company</span>
+              <input type="text" placeholder="Optional" name="company" />
+            </label>
+
+            <div class="field">
+              <div class="eyebrow">Project type</div>
+              <div class="toggle-group" data-name="type">
+                <button type="button" class="toggle-btn is-active" data-val="website">Website</button>
+                <button type="button" class="toggle-btn" data-val="app">Web app</button>
+                <button type="button" class="toggle-btn" data-val="system">Design system</button>
+                <button type="button" class="toggle-btn" data-val="advisory">Advisory</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="eyebrow">Budget</div>
+              <div class="toggle-group" data-name="budget">
+                <button type="button" class="toggle-btn" data-val="lt20k">&lt;20k</button>
+                <button type="button" class="toggle-btn is-active" data-val="20-50k">20-50k</button>
+                <button type="button" class="toggle-btn" data-val="50-100k">50-100k</button>
+                <button type="button" class="toggle-btn" data-val="100kplus">100k+</button>
+              </div>
+            </div>
+
+            <label class="field">
+              <span class="eyebrow">Message</span>
+              <textarea name="message" rows="4" placeholder="Tell me about the project — timeline, scope, who's involved."></textarea>
+            </label>
+
+            <div class="form-footer">
+              <button type="submit" class="btn btn-primary">Send note <span>→</span></button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Toggle groups
+  document.querySelectorAll<HTMLElement>('.toggle-group').forEach(group => {
+    group.querySelectorAll<HTMLButtonElement>('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+      });
+    });
+  });
+
+  // Form submit
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const fields = document.getElementById('form-fields') as HTMLElement;
+  const success = document.getElementById('form-success') as HTMLElement;
+  const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    fields.hidden = true;
+    success.hidden = false;
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    success.hidden = true;
+    fields.hidden = false;
+    form?.reset();
+  });
+</script>
+
+<style>
+  .contact-section { padding: 96px 0; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+  }
+
+  .garnet { color: var(--garnet-500); }
+
+  .contact-heading {
+    margin-top: 24px;
+    font-size: clamp(48px, 6.5vw, 96px);
+    font-weight: 500;
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .contact-lead {
+    margin-top: 32px;
+    color: var(--fg-2);
+    font-size: 19px;
+    line-height: 1.55;
+    max-width: 460px;
+  }
+
+  .info-table {
+    margin-top: 64px;
+    border-top: var(--border-hairline);
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: var(--border-hairline);
+  }
+
+  .info-val { font-size: 15px; color: var(--fg-1); }
+
+  /* Form */
+  .contact-form {
+    border-radius: 18px;
+    padding: 32px;
+    align-self: start;
+  }
+
+  .form-fields { display: flex; flex-direction: column; gap: 20px; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field input,
+  .field textarea {
+    background: var(--bg);
+    color: var(--fg-1);
+    border: var(--border-hairline);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font: 400 15px/1.4 var(--font-sans);
+    outline: none;
+    width: 100%;
+    resize: none;
+    transition: border-color var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--garnet-700);
+    box-shadow: 0 0 0 4px color-mix(in oklab, #C73348 18%, transparent);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder { color: var(--fg-3); }
+
+  /* Toggle buttons */
+  .toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .toggle-btn {
+    cursor: pointer;
+    font: 500 12px/1 var(--font-sans);
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+    border: var(--border-hairline);
+    background: transparent;
+    color: var(--fg-2);
+    transition: all var(--dur-2) var(--ease-out);
+  }
+
+  .toggle-btn:hover { color: var(--fg-1); }
+
+  .toggle-btn.is-active {
+    background: var(--fg-1);
+    border-color: transparent;
+    color: var(--ink-1000);
+  }
+
+  .form-footer { display: flex; justify-content: flex-end; }
+
+  /* Success state */
+  .form-success { padding: 32px 0; }
+
+  .success-eyebrow {
+    font-size: var(--fs-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--garnet-400);
+  }
+
+  .success-heading {
+    margin-top: 16px;
+    font: 500 32px/1.1 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--fg-1);
+  }
+
+  .reset-btn {
+    margin-top: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-3);
+    padding: 0;
+    letter-spacing: 0.06em;
+    transition: opacity var(--dur-2) var(--ease-out);
+  }
+
+  .reset-btn:hover { opacity: 0.7; }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>

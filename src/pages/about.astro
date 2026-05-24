@@ -1,0 +1,261 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About — Manbir Singh">
+  <Nav current="about" />
+
+  <main>
+    <!-- Hero heading -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="eyebrow">About</div>
+        <h1 class="about-heading">
+          A software engineer based in Toronto, building
+          <span class="serif-i garnet">fast, careful</span>
+          interfaces for product teams.
+        </h1>
+      </div>
+    </section>
+
+    <!-- Bio + currently panel -->
+    <section class="bio-section">
+      <div class="container bio-grid">
+        <aside class="glass-subtle currently-panel">
+          <div class="eyebrow">Currently</div>
+          <div class="currently-city">Toronto, ON</div>
+          <div class="currently-meta">
+            <div class="meta-row">
+              <span class="eyebrow">Status</span>
+              <span class="available">● AVAILABLE Q3</span>
+            </div>
+            <div class="meta-row">
+              <span class="eyebrow">TZ</span>
+              <span>GMT-5</span>
+            </div>
+            <div class="meta-row">
+              <span class="eyebrow">Remote</span>
+              <span>YES</span>
+            </div>
+            <div class="meta-row">
+              <span class="eyebrow">Relocate</span>
+              <span>NYC · SF · LDN</span>
+            </div>
+          </div>
+          <div class="currently-links">
+            <a href="https://github.com" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://read.cv" target="_blank" rel="noopener">Read.cv ↗</a>
+          </div>
+        </aside>
+
+        <div class="bio-text">
+          <p class="bio-lead">
+            I've spent six years engineering web applications for design-led companies — atelier brands, consultancies, and a handful of YC startups.
+          </p>
+          <p class="bio-body">
+            Most of my work lives at the intersection of <span class="serif-i garnet">engineering and craft</span> — type, motion, color, performance. I care about builds that load fast on a phone in a coffee shop, codebases that survive their first founder, and details that make a product feel made by someone, not by a template.
+          </p>
+          <p class="bio-body">
+            I write TypeScript and a little Go. I prototype in React, often before Figma. I think a lot about latency, and very little about frameworks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow">Experience</div>
+        <div class="glass-subtle exp-table">
+          {[
+            ['2024 — Now',  'Independent',        'Engineer and designer for atelier brands and product teams.'],
+            ['2022 — 2024', 'Senior Engineer',     'Frontend platform at a Series-B fintech. Owned design system and motion.'],
+            ['2020 — 2022', 'Product Engineer',    'Two YC startups. Shipped from zero to first 10k users.'],
+            ['2019 — 2020', 'Engineering Intern',  'Big-Four consulting practice. Internal tools, dashboards.'],
+          ].map(([yr, role, desc], i, arr) => (
+            <div class="exp-row" data-last={i === arr.length - 1 ? 'true' : 'false'}>
+              <div class="eyebrow">{yr}</div>
+              <div class="exp-role">{role}</div>
+              <div class="exp-desc">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="section-lg">
+      <div class="container">
+        <div class="eyebrow">How I work</div>
+        <div class="principles-grid">
+          {[
+            ['01', 'Performance is a feature.', 'Lighthouse 95+. Sub-second LCP. Bundle budgets enforced in CI.'],
+            ['02', 'Static where possible.',    'Most sites need a CDN and a build step, not a server.'],
+            ['03', 'Motion that earns it.',     'Small fades, careful easing. No bouncing, no gratuitous spring.'],
+          ].map(([n, title, desc]) => (
+            <div class="glass-subtle principle-card">
+              <div class="eyebrow" style="color: var(--garnet-400)">{n}</div>
+              <div class="principle-title">{title}</div>
+              <div class="principle-desc">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .about-hero {
+    padding: 96px 0 64px;
+  }
+
+  .about-heading {
+    margin-top: 28px;
+    max-width: 1100px;
+    font-size: clamp(40px, 6vw, 96px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .garnet { color: var(--garnet-500); }
+
+  .bio-section { padding-bottom: 96px; }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 96px;
+    align-items: start;
+  }
+
+  .currently-panel {
+    position: sticky;
+    top: 96px;
+    border-radius: 18px;
+    padding: 24px 26px;
+  }
+
+  .currently-city {
+    margin-top: 16px;
+    font: 500 22px/1.2 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--fg-1);
+  }
+
+  .currently-meta {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-2);
+    letter-spacing: 0.04em;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .available { color: var(--garnet-400); }
+
+  .currently-links {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: var(--border-hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .currently-links a {
+    color: var(--fg-1);
+    text-decoration: none;
+    transition: opacity var(--dur-2) var(--ease-out);
+  }
+
+  .currently-links a:hover { opacity: 0.7; }
+
+  .bio-text { font-size: 19px; line-height: 1.65; color: var(--fg-2); }
+
+  .bio-lead {
+    color: var(--fg-1);
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .bio-body { margin-top: 32px; }
+
+  /* Experience */
+  .section    { padding: 64px 0 48px; }
+  .section-lg { padding: 96px 0; }
+
+  .exp-table {
+    margin-top: 24px;
+    border-radius: 18px;
+    padding: 8px 24px;
+  }
+
+  .exp-row {
+    display: grid;
+    grid-template-columns: 180px 280px 1fr;
+    gap: 32px;
+    padding: 22px 0;
+    border-bottom: var(--border-hairline);
+  }
+
+  .exp-row[data-last="true"] { border-bottom: none; }
+
+  .exp-role {
+    font: 500 20px/1.1 var(--font-display);
+    letter-spacing: -0.015em;
+    color: var(--fg-1);
+  }
+
+  .exp-desc { font-size: 15px; color: var(--fg-2); }
+
+  /* Principles */
+  .principles-grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .principle-card {
+    padding: 28px;
+    border-radius: 18px;
+  }
+
+  .principle-title {
+    margin-top: 18px;
+    font: 500 22px/1.15 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--fg-1);
+  }
+
+  .principle-desc {
+    margin-top: 12px;
+    color: var(--fg-2);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+    .currently-panel { position: static; }
+    .exp-row { grid-template-columns: 1fr 1fr; }
+    .exp-desc { display: none; }
+    .principles-grid { grid-template-columns: 1fr; }
+  }
+</style>

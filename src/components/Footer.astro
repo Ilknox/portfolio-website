@@ -1,0 +1,127 @@
+---
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-wordmark">manbir<span class="dot">.</span></div>
+        <p>Engineering high-performance web applications and scalable technical architecture.</p>
+      </div>
+
+      <div>
+        <div class="eyebrow">Sitemap</div>
+        <div class="link-list">
+          <a href="/">Work</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Elsewhere</div>
+        <div class="link-list">
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://read.cv" target="_blank" rel="noopener">Read.cv ↗</a>
+          <a href="mailto:hi@manbir.dev">Email ↗</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Index</div>
+        <div class="link-list mono-list">
+          <span>v 1.0.0</span>
+          <span>Toronto, ON</span>
+          <span class="available">● AVAILABLE Q3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 MANBIR SINGH</span>
+      <span>BUILT WITH ASTRO · TYPESCRIPT · TAILWIND</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    margin-top: var(--space-10);
+    padding: 64px 0 48px;
+    border-top: var(--border-hairline);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  .brand-wordmark {
+    font: 500 56px/1 var(--font-display);
+    letter-spacing: -0.035em;
+    color: var(--fg-1);
+  }
+
+  .dot { color: var(--garnet-500); }
+
+  .footer-brand p {
+    margin-top: 16px;
+    font-size: 15px;
+    max-width: 320px;
+    color: var(--fg-2);
+  }
+
+  .eyebrow {
+    font-size: var(--fs-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 14px;
+  }
+
+  .link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .link-list a {
+    color: var(--fg-1);
+    text-decoration: none;
+    transition: opacity var(--dur-2) var(--ease-out);
+  }
+
+  .link-list a:hover { opacity: 0.7; }
+
+  .mono-list {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-2);
+  }
+
+  .available { color: var(--garnet-400); }
+
+  .footer-bottom {
+    margin-top: 64px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-3);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>
