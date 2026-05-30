@@ -67,7 +67,7 @@ const EXPERIENCE_CLIENTS = [
     industry: 'Homeownership Fintech',
     role: 'Software Developer & Technical Consultant',
     period: 'Oct 2024 – Jan 2026',
-    desc: 'Built and owned the full technology stack for an early-stage fintech — spanning CRM architecture, web development, process automation, and AI tooling. Worked directly with the founding team to design operational systems from scratch, integrating HubSpot, Webflow, and React/TypeScript across customer-facing and internal workflows.',
+    desc: 'Built and owned the full technology stack for an early-stage fintech, spanning CRM architecture, web development, process automation, and AI tooling. Worked directly with the founding team to design operational systems from scratch, integrating HubSpot, Webflow, and React/TypeScript across customer-facing and internal workflows.',
   },
   {
     company: 'Elevare',
