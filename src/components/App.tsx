@@ -72,7 +72,7 @@ const EXPERIENCE_CLIENTS = [
   {
     company: 'Elevare',
     industry: 'Management Consulting',
-    role: 'Software Developer & Technical Consultant',
+    role: 'Technical Consultant',
     period: 'Sep 2025 – Feb 2026',
     desc: 'Designed and delivered a full brand identity system for a management consulting firm, including a Framer CMS website, pitch deck templates, and a reusable design asset library. Worked iteratively with stakeholders through discovery sessions and feedback cycles to produce a polished, self-manageable digital presence.',
   },
