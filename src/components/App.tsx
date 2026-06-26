@@ -98,7 +98,7 @@ const PERSONAL_PROJECTS = [
   {
     id: 'math-mania',
     name: 'Math Mania',
-    role: 'Software Developer',
+    role: 'Product Engineer',
     desc: 'Developed Math Mania, a web platform teaching kids math through competitive, game-style gameplay, turning practice into timed challenges designed to keep young learners engaged.',
     highlights: [
       { label: 'RESEARCH', text: 'Studied how children stay motivated and how competitive game mechanics can drive repeated practice.' },
