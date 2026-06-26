@@ -22,7 +22,7 @@ const PROJECTS = [
       { label: 'DESIGN',  text: 'Defined the design language, user flows, and a component architecture built to scale.' },
       { label: 'BUILD',   text: 'Prototyped the full-stack app in React, TypeScript, and Tailwind on a Supabase backend.' },
     ],
-    tags: ['REACT', 'TYPESCRIPT', 'SUPABASE', 'COMPONENT ARCHITECTURE'],
+    tags: ['REACT', 'TYPESCRIPT', 'SUPABASE', 'FULL STACK', 'COMPONENT ARCHITECTURE'],
   },
   {
     id: 'bloxx-website',
@@ -35,7 +35,7 @@ const PROJECTS = [
       { label: 'DESIGN',  text: 'Configured the CMS so non-technical staff could own and manage content independently.' },
       { label: 'BUILD',   text: 'Delivered a complex Webflow build with custom code and integrated HubSpot lead capture end to end.' },
     ],
-    tags: ['WEBFLOW', 'JAVASCRIPT', 'HUBSPOT', 'CSS'],
+    tags: ['WEBFLOW', 'JAVASCRIPT', 'HUBSPOT', 'SEO', 'CMS', 'MULTI-MARKET'],
   },
   {
     id: 'bloxx-ai',
@@ -49,7 +49,7 @@ const PROJECTS = [
       { label: 'DESIGN',   text: 'Built a Figma template system that auto-populated marketing components from structured data, removing manual design work per property.' },
       { label: 'BUILD',    text: 'Deployed a custom Google Gemini agent for property analysis, then piped its output through a structured data source into the Figma system to generate marketing assets end to end.' },
     ],
-    tags: ['AI', 'AUTOMATION', 'JAVASCRIPT', 'HUBSPOT'],
+    tags: ['GOOGLE GEMINI', 'JAVASCRIPT', 'AI PIPELINE', 'WORKFLOW AUTOMATION', 'PROCESS DESIGN'],
   },
   {
     id: 'elevare',
@@ -62,7 +62,7 @@ const PROJECTS = [
       { label: 'DESIGN',  text: 'Created the full identity system, from website to pitch deck templates to letterhead.' },
       { label: 'BUILD',   text: 'Shipped a Framer CMS website and a reusable design asset library built for non-designer use.' },
     ],
-    tags: ['FRAMER', 'FIGMA', 'CMS', 'CANVA'],
+    tags: ['FRAMER', 'FIGMA', 'CMS', 'BRAND IDENTITY', 'CLIENT DELIVERY'],
   },
 ];
 
@@ -79,7 +79,7 @@ const PERSONAL_PROJECTS = [
       { label: 'DESIGN',        text: 'Created a custom design system with a depth-illusion visual language and optically centered Gurmukhi glyphs.' },
       { label: 'BUILD',         text: 'Architected a Next.js and NestJS monorepo on Supabase, developed with Claude Code.' },
     ],
-    tags: ['NEXT.JS', 'NESTJS', 'TYPESCRIPT', 'SUPABASE'],
+    tags: ['NEXT.JS', 'NESTJS', 'TYPESCRIPT', 'SUPABASE', 'MONOREPO', 'USER RESEARCH'],
   },
   {
     id: 'dealroom',
@@ -93,7 +93,7 @@ const PERSONAL_PROJECTS = [
       { label: 'DESIGN',        text: "Owned the visual language and the end-to-end feel from an investor's perspective." },
       { label: 'BUILD',         text: 'Architected and rapidly prototyped the platform in Bolt, iterating quickly on a React, TypeScript, and Vite stack with Supabase.' },
     ],
-    tags: ['REACT', 'TYPESCRIPT', 'VITE', 'SUPABASE'],
+    tags: ['REACT', 'TYPESCRIPT', 'VITE', 'SUPABASE', 'END TO END', 'USER RESEARCH'],
   },
   {
     id: 'math-mania',
@@ -106,7 +106,7 @@ const PERSONAL_PROJECTS = [
       { label: 'UX',       text: 'Shaped a game-style flow that makes timed math practice feel like play rather than testing.' },
       { label: 'BUILD',    text: 'Built the React client against a separate backend service, developed with Claude Code.' },
     ],
-    tags: ['REACT', 'TYPESCRIPT', 'VERCEL'],
+    tags: ['REACT', 'TYPESCRIPT', 'VERCEL', 'GAMIFICATION', 'EDTECH'],
   },
 ];
 
