@@ -26,7 +26,7 @@ const PROJECTS = [
   },
   {
     id: 'bloxx-website',
-    name: 'Marketing Website',
+    name: 'Multi-Market Website',
     role: 'Web Development',
     company: 'BLOXX',
     desc: 'Built and launched a multi-market website across NZ, UK, and global, with jurisdiction-specific SEO and a CMS that let non-technical staff manage content independently. Extended a complex Webflow build with custom code.',
@@ -39,7 +39,7 @@ const PROJECTS = [
   },
   {
     id: 'bloxx-ai',
-    name: 'AI Automation Pipeline',
+    name: 'AI Operations Pipeline',
     role: 'AI & Automation',
     company: 'BLOXX',
     desc: 'Designed and deployed a two-stage pipeline that used AI to analyse properties and then auto-generate marketing assets from that analysis, integrated directly into the core operational workflow.',
@@ -53,7 +53,7 @@ const PROJECTS = [
   },
   {
     id: 'elevare',
-    name: 'Brand Identity System',
+    name: 'Web & Brand Identity',
     role: 'Website & Brand Identity',
     company: 'Elevare',
     desc: 'Designed and shipped a complete brand identity system for a management consulting firm, including a Framer CMS website, pitch deck templates, and a reusable design asset library built for non-designer use.',
@@ -120,6 +120,38 @@ const STACK_CATS = [
   { cat: 'AI & Agentic',     items: ['Claude Code', 'Google Gemini', 'Bolt', 'Cursor', 'n8n'] },
 ];
 
+const TOC_DATA = [
+  {
+    num: '01', label: 'Work', href: '#work',
+    items: [
+      { name: 'Super App Platform', descriptors: ['FINTECH', 'APP'] },
+      { name: 'Multi-Market Website', descriptors: ['WEBFLOW', 'CMS'] },
+      { name: 'AI Operations Pipeline', descriptors: ['AI', 'OPERATIONS'] },
+      { name: 'Web & Brand Identity',   descriptors: ['BRAND', 'CONSULTING'] },
+    ],
+  },
+  {
+    num: '02', label: 'Projects', href: '#projects',
+    items: [
+      { name: 'Akhar',      descriptors: ['LANGUAGE', 'PLATFORM'] },
+      { name: 'DealRoom',   descriptors: ['REAL ESTATE', 'PLATFORM'] },
+      { name: 'Math Mania', descriptors: ['EDTECH', 'GAME'] },
+    ],
+  },
+  {
+    num: '03', label: 'Stack', href: '#stack',
+    items: [],
+  },
+  {
+    num: '04', label: 'Experience', href: '#experience',
+    items: [
+      { name: 'BLOXX',             descriptors: ['FINTECH'] },
+      { name: 'Elevare',           descriptors: ['CONSULTING'] },
+      { name: 'Terra Consultants', descriptors: ['LAND DEV'] },
+    ],
+  },
+];
+
 const EXPERIENCE_PARENT = {
   role: 'Software Developer',
   period: 'Oct 2024 – Feb 2026',
@@ -149,6 +181,45 @@ const EXPERIENCE_CLIENTS = [
     desc: 'Redesigned a broken operational workflow into a structured, stage-gated process implemented directly in HubSpot CRM. Conducted stakeholder discovery, mapped as-is and to-be states, and delivered full handover documentation including training materials and a centralised Figma asset library.',
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Floating TOC
+// ---------------------------------------------------------------------------
+
+function FloatingTOC() {
+  return (
+    <div className="hidden 2xl:flex fixed left-6 top-1/2 -translate-y-1/2 z-30 flex-col gap-6 w-44">
+      <p className="text-[10px] font-mono tracking-widest text-gray-300 uppercase mb-2">Contents</p>
+      {TOC_DATA.map(({ num, label, href, items }) => (
+        <div key={num}>
+          <a href={href} className="flex items-center gap-2 group mb-3">
+            <span className="text-xs font-mono text-gray-400 tabular-nums">{num}</span>
+            <span className="text-xs font-mono tracking-widest text-gray-500 uppercase group-hover:text-gray-900 transition-colors">
+              {label}
+            </span>
+            <span className="text-gray-300 group-hover:text-gray-600 transition-colors text-xs ml-0.5">↗</span>
+          </a>
+          {items.length > 0 && (
+            <div className="pl-5 flex flex-col gap-2.5">
+              {items.map(({ name, descriptors }) => (
+                <div key={name}>
+                  <p className="text-xs text-gray-500 leading-tight mb-0.5">{name}</p>
+                  <div className="flex flex-wrap gap-x-1.5 gap-y-0.5">
+                    {descriptors.map(d => (
+                      <span key={d} className="text-[10px] font-mono text-gray-400 uppercase tracking-wide">
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 // ---------------------------------------------------------------------------
 // Nav
@@ -730,6 +801,7 @@ function Photography() {
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900 font-sans">
+      <FloatingTOC />
       <Nav />
       <main>
         <Hero />
