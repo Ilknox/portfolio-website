@@ -1,0 +1,44 @@
+{
+    "profile": {
+        "name": "Manbir Singh",
+        "brand": "ILKNOX",
+        "headline": "I engineer high-performance web applications and scalable technical architecture.",
+        "subline": "I specialize in React, TypeScript, and Tailwind CSS. I transform complex business requirements into clean and performant code."
+    },
+    "projects": [
+        {
+            "id": "bloxx-superapp",
+            "company": "BLOXX",
+            "title": "Full-Stack Platform Prototype",
+            "description": "I built a comprehensive platform prototype using React and TypeScript. I designed the complete customer journey and implemented a reusable component library for the engineering team. I used this prototype for investor demonstrations to establish the production roadmap.",
+            "tech": [
+                "React",
+                "TypeScript",
+                "Tailwind CSS",
+                "Supabase"
+            ]
+        },
+        {
+            "id": "terra-process",
+            "company": "Terra Consultants",
+            "title": "Process Redesign and CRM Architecture",
+            "description": "I redesigned the fee proposal process to improve visibility and ownership. I built stage-gating validation tools and management dashboards within HubSpot. I produced comprehensive documentation to ensure the system remains scalable for the team.",
+            "tech": [
+                "HubSpot",
+                "Figma",
+                "Process Mapping"
+            ]
+        },
+        {
+            "id": "elevare-brand",
+            "company": "Elevare",
+            "title": "Brand Identity and Website",
+            "description": "I built a professional brand identity system and website. I established a design language that extends across all digital and physical materials. I ensured the client is self-sufficient for ongoing content management.",
+            "tech": [
+                "Framer",
+                "Figma",
+                "Design Systems"
+            ]
+        }
+    ]
+}

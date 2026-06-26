@@ -45,6 +45,50 @@ const PROJECTS = [
   },
 ];
 
+const PERSONAL_PROJECTS = [
+  {
+    id: 'akhar',
+    name: 'Akhar',
+    role: 'Product Engineer',
+    desc: 'Built Akhar, a web app helping fluent Punjabi speakers learn to read and write Gurmukhi script. The product targets the real bottleneck for fluent speakers, which is decoding the script, not learning the language, and is built around a readiness-based progression that unlocks new material as learners reach mastery.',
+    highlights: [
+      { label: 'RESEARCH',      text: 'Grounded the method in cognitive science, using retrieval practice, FSRS spaced repetition, and deliberate contrast of confusable letter pairs.' },
+      { label: 'USER RESEARCH', text: 'Interviewed Punjabi-speaking families and their children to understand how the script is lost across generations and what would keep learners engaged.' },
+      { label: 'UX',            text: 'Designed a no-transliteration reading experience that forces genuine decoding, with tap-to-reveal confirmation and struggle routing that feeds weak letters back into practice.' },
+      { label: 'DESIGN',        text: 'Created a custom design system with a depth-illusion visual language and optically centered Gurmukhi glyphs.' },
+      { label: 'BUILD',         text: 'Architected a Next.js and NestJS monorepo on Supabase, developed with Claude Code.' },
+    ],
+    tags: ['NEXT.JS', 'NESTJS', 'TYPESCRIPT', 'SUPABASE'],
+  },
+  {
+    id: 'dealroom',
+    name: 'DealRoom',
+    role: 'Product Engineer',
+    desc: 'Built a platform for investors to browse, evaluate, and bookmark real estate development opportunities across global markets, replacing scattered links with a single curated view. Each deal surfaces the metrics investors actually weigh, including IRR, cash yield, and equity multiple.',
+    highlights: [
+      { label: 'USER RESEARCH', text: 'Interviewed deal makers and active investors who assemble property deals, shaping the platform around how they actually evaluate and compare opportunities.' },
+      { label: 'STRATEGY',      text: 'Reframed the problem from sharing many links to presenting a single curated deal view, which set the core product direction.' },
+      { label: 'UX',            text: 'Designed grid and list browsing, bookmarking, and a search overlay around an authenticated investor workflow.' },
+      { label: 'DESIGN',        text: "Owned the visual language and the end-to-end feel from an investor's perspective." },
+      { label: 'BUILD',         text: 'Architected and rapidly prototyped the platform in Bolt, iterating quickly on a React, TypeScript, and Vite stack with Supabase.' },
+    ],
+    tags: ['REACT', 'TYPESCRIPT', 'VITE', 'SUPABASE'],
+  },
+  {
+    id: 'math-mania',
+    name: 'Math Mania',
+    role: 'Software Developer',
+    desc: 'Developed Math Mania, a web platform teaching kids math through competitive, game-style gameplay, turning practice into timed challenges designed to keep young learners engaged.',
+    highlights: [
+      { label: 'RESEARCH', text: 'Studied how children stay motivated and how competitive game mechanics can drive repeated practice.' },
+      { label: 'STRATEGY', text: 'Designed the experience around child users, accounting for anonymity and age-appropriate interaction.' },
+      { label: 'UX',       text: 'Shaped a game-style flow that makes timed math practice feel like play rather than testing.' },
+      { label: 'BUILD',    text: 'Built the React client against a separate backend service, developed with Claude Code.' },
+    ],
+    tags: ['REACT', 'TYPESCRIPT', 'VERCEL'],
+  },
+];
+
 const STACK_CATS = [
   { cat: 'Languages',        items: ['TypeScript', 'JavaScript', 'Python', 'SQL'] },
   { cat: 'Frontend',         items: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
@@ -128,6 +172,7 @@ function Nav() {
           {/* Desktop centre links */}
           <div className="hidden md:flex items-center gap-8">
             <a href="#work" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Work</a>
+            <a href="#projects" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Projects</a>
             <a href="#experience" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Experience</a>
           </div>
 
@@ -196,6 +241,7 @@ function Nav() {
           <div className="flex flex-col gap-2">
             {[
               { label: 'Work', href: '#work', delay: '0.12s' },
+              { label: 'Projects', href: '#projects', delay: '0.16s' },
               { label: 'Experience', href: '#experience', delay: '0.2s' },
             ].map(({ label, href, delay }) => (
               <a
@@ -348,6 +394,69 @@ function BentoGrid() {
 }
 
 // ---------------------------------------------------------------------------
+// Personal projects
+// ---------------------------------------------------------------------------
+
+function ProjectRow({ project }: { project: (typeof PERSONAL_PROJECTS)[0] }) {
+  return (
+    <div>
+      {/* Role label above both columns so name and desc start on the same plane */}
+      <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-4">
+        {project.role}
+      </p>
+
+      {/* Name */}
+      <h3
+        className="font-medium tracking-tight leading-none text-gray-900 mb-5"
+        style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}
+      >
+        {project.name}
+      </h3>
+
+      {/* Description — left border signals this is the project summary */}
+      <div className="border-l-2 border-gray-200 pl-5 mb-8 max-w-2xl">
+        <p className="text-sm text-gray-500 leading-relaxed">{project.desc}</p>
+      </div>
+
+      {/* Highlights + tags — full width */}
+      <div className="flex flex-col gap-2 mb-6">
+        {project.highlights.map(({ label, text }) => (
+          <div key={label} className="flex gap-4">
+            <span className="text-xs font-mono tracking-widest text-gray-400 uppercase shrink-0 w-32">
+              {label}
+            </span>
+            <span className="text-sm text-gray-500 leading-snug">{text}</span>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {project.tags.map(t => (
+          <Chip key={t} label={t} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PersonalProjects() {
+  return (
+    <section id="projects" className="max-w-6xl mx-auto px-6 pb-16">
+      <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-6">
+        Projects
+      </p>
+      <div>
+        {PERSONAL_PROJECTS.map((project, i) => (
+          <div key={project.id}>
+            {i > 0 && <div className="border-t border-gray-100 my-16 md:my-24" />}
+            <ProjectRow project={project} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Stack
 // ---------------------------------------------------------------------------
 
@@ -489,6 +598,7 @@ function Footer() {
             {[
               { label: 'Work',       href: '#work' },
               { label: 'Stack',      href: '#stack' },
+              { label: 'Projects',   href: '#projects' },
               { label: 'Experience', href: '#experience' },
             ].map(({ label, href }) => (
               <a key={label} href={href} className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">
@@ -613,6 +723,7 @@ export default function App() {
       <main>
         <Hero />
         <BentoGrid />
+        <PersonalProjects />
         <Stack />
         <Experience />
         <Photography />
