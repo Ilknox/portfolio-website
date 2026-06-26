@@ -13,34 +13,55 @@ const NAV_ITEMS = [
 const PROJECTS = [
   {
     id: 'bloxx-superapp',
+    name: 'Super App Platform',
+    role: 'Superapp',
     company: 'BLOXX',
-    title: 'Super App Platform',
-    type: 'Superapp',
-    desc: 'Prototyped a full-stack super app consolidating property discovery, customer onboarding, and financial pre-qualification into a single platform. Defined the design language, component architecture, and user flows used in investor demonstrations.',
+    desc: 'Prototyped a full-stack super app consolidating property discovery, customer onboarding, and financial pre-qualification into a single platform used in investor demonstrations. Defined the design language, component architecture, and user flows end to end.',
+    highlights: [
+      { label: 'PRODUCT', text: 'Unified six product domains, including property search, underwriting, education, and financial management, into one platform for investor demonstrations.' },
+      { label: 'DESIGN',  text: 'Defined the design language, user flows, and a component architecture built to scale.' },
+      { label: 'BUILD',   text: 'Prototyped the full-stack app in React, TypeScript, and Tailwind on a Supabase backend.' },
+    ],
     tags: ['REACT', 'TYPESCRIPT', 'SUPABASE', 'COMPONENT ARCHITECTURE'],
   },
   {
     id: 'bloxx-website',
+    name: 'Marketing Website',
+    role: 'Web Development',
     company: 'BLOXX',
-    title: 'Marketing Website',
-    type: 'Web Development',
-    desc: 'Built a multi-market website on Webflow with jurisdiction-specific SEO, HubSpot lead capture integration, and CMS configuration enabling non-technical staff to manage content independently. Implemented custom code additions on top of the Webflow build for extended functionality.',
+    desc: 'Built and launched a multi-market website across NZ, UK, and global, with jurisdiction-specific SEO and a CMS that let non-technical staff manage content independently. Extended a complex Webflow build with custom code.',
+    highlights: [
+      { label: 'PRODUCT', text: 'Built a multi-market presence across NZ, UK, and global with jurisdiction-specific SEO.' },
+      { label: 'DESIGN',  text: 'Configured the CMS so non-technical staff could own and manage content independently.' },
+      { label: 'BUILD',   text: 'Delivered a complex Webflow build with custom code and integrated HubSpot lead capture end to end.' },
+    ],
     tags: ['WEBFLOW', 'JAVASCRIPT', 'HUBSPOT', 'CSS'],
   },
   {
     id: 'bloxx-ai',
+    name: 'AI Automation Pipeline',
+    role: 'AI & Automation',
     company: 'BLOXX',
-    title: 'AI Automation Pipeline',
-    type: 'AI & Automation',
-    desc: 'Designed and deployed an AI agent for automated property analysis and marketing asset generation, integrated into the core operational workflow. Reduced manual processing significantly and enabled the team to scale output without additional headcount.',
+    desc: 'Designed and deployed a two-stage pipeline that used AI to analyse properties and then auto-generate marketing assets from that analysis, integrated directly into the core operational workflow.',
+    highlights: [
+      { label: 'RESEARCH', text: 'Spoke with customers to understand where the value of property information sits, then shaped the pipeline output around what they actually needed.' },
+      { label: 'PRODUCT',  text: 'Targeted the manual property analysis and marketing production bottleneck slowing the core operational workflow.' },
+      { label: 'DESIGN',   text: 'Built a Figma template system that auto-populated marketing components from structured data, removing manual design work per property.' },
+      { label: 'BUILD',    text: 'Deployed a custom Google Gemini agent for property analysis, then piped its output through a structured data source into the Figma system to generate marketing assets end to end.' },
+    ],
     tags: ['AI', 'AUTOMATION', 'JAVASCRIPT', 'HUBSPOT'],
   },
   {
     id: 'elevare',
+    name: 'Brand Identity System',
+    role: 'Website & Brand Identity',
     company: 'Elevare',
-    title: 'Brand Identity System',
-    type: 'Website & Brand Identity',
     desc: 'Designed and shipped a complete brand identity system for a management consulting firm, including a Framer CMS website, pitch deck templates, and a reusable design asset library built for non-designer use.',
+    highlights: [
+      { label: 'PRODUCT', text: 'Gave a management consulting firm a coherent, self-manageable brand presence from scratch.' },
+      { label: 'DESIGN',  text: 'Created the full identity system, from website to pitch deck templates to letterhead.' },
+      { label: 'BUILD',   text: 'Shipped a Framer CMS website and a reusable design asset library built for non-designer use.' },
+    ],
     tags: ['FRAMER', 'FIGMA', 'CMS', 'CANVA'],
   },
 ];
@@ -91,12 +112,12 @@ const PERSONAL_PROJECTS = [
 
 const STACK_CATS = [
   { cat: 'Languages',        items: ['TypeScript', 'JavaScript', 'Python', 'SQL'] },
-  { cat: 'Frontend',         items: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
-  { cat: 'Backend',          items: ['Node.js', 'PostgreSQL', 'GraphQL', 'Express'] },
-  { cat: 'Infrastructure',   items: ['Docker', 'AWS', 'Render', 'Vercel'] },
+  { cat: 'Frontend',         items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'HTML', 'CSS'] },
+  { cat: 'Backend',          items: ['Node.js', 'NestJS', 'PostgreSQL', 'GraphQL', 'Express'] },
+  { cat: 'Infrastructure',   items: ['Supabase', 'Docker', 'AWS', 'Render', 'Vercel'] },
   { cat: 'Platforms',        items: ['HubSpot', 'Webflow', 'Wix', 'Framer'] },
   { cat: 'Design',           items: ['Figma', 'Adobe Photoshop', 'Adobe Premiere Pro', 'Adobe Firefly', 'Adobe Lightroom', 'Canva'] },
-  { cat: 'AI & Agentic',     items: ['Claude Code', 'Google Antigravity', 'Cursor', 'n8n'] },
+  { cat: 'AI & Agentic',     items: ['Claude Code', 'Google Gemini', 'Bolt', 'Cursor', 'n8n'] },
 ];
 
 const EXPERIENCE_PARENT = {
@@ -173,6 +194,7 @@ function Nav() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#work" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Work</a>
             <a href="#projects" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Projects</a>
+            <a href="#stack" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Stack</a>
             <a href="#experience" className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">Experience</a>
           </div>
 
@@ -240,9 +262,10 @@ function Nav() {
           <p className="text-xs font-mono tracking-widest text-gray-300 uppercase mb-8">Navigation</p>
           <div className="flex flex-col gap-2">
             {[
-              { label: 'Work', href: '#work', delay: '0.12s' },
-              { label: 'Projects', href: '#projects', delay: '0.16s' },
-              { label: 'Experience', href: '#experience', delay: '0.2s' },
+              { label: 'Work',       href: '#work',       delay: '0.12s' },
+              { label: 'Projects',   href: '#projects',   delay: '0.16s' },
+              { label: 'Stack',      href: '#stack',      delay: '0.20s' },
+              { label: 'Experience', href: '#experience', delay: '0.24s' },
             ].map(({ label, href, delay }) => (
               <a
                 key={label}
@@ -326,7 +349,7 @@ function Hero() {
 }
 
 // ---------------------------------------------------------------------------
-// Bento grid
+// Shared primitives
 // ---------------------------------------------------------------------------
 
 function Chip({ label }: { label: string }) {
@@ -337,88 +360,34 @@ function Chip({ label }: { label: string }) {
   );
 }
 
-function ProjectCard({
-  project,
-  className = '',
-}: {
-  project: (typeof PROJECTS)[0];
-  className?: string;
-}) {
-  return (
-    <div
-      className={`border border-gray-200 bg-gray-100/50 p-6 flex flex-col justify-between gap-6 ${className}`}
-    >
-      <div>
-        <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-3">
-          {project.type}
-        </p>
-        <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-gray-900">
-          {project.title}
-        </h3>
-        <p className="mt-3 text-sm text-gray-500 leading-relaxed">{project.desc}</p>
-      </div>
-      <div className="flex items-end justify-between gap-4">
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map(t => (
-            <Chip key={t} label={t} />
-          ))}
-        </div>
-        <span className="text-xs font-mono tracking-widest text-gray-300 uppercase shrink-0">
-          {project.company}
-        </span>
-      </div>
-    </div>
-  );
-}
+type ProjectEntry = {
+  id: string;
+  name: string;
+  role: string;
+  company?: string;
+  desc: string;
+  highlights: { label: string; text: string }[];
+  tags: string[];
+};
 
-function BentoGrid() {
-  return (
-    <section id="work" className="max-w-6xl mx-auto px-6 pb-16">
-      <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-6">
-        Selected work
-      </p>
-
-      {/* Row 1: BLOXX SuperApp full width */}
-      <div className="mb-4">
-        <ProjectCard project={PROJECTS[0]} className="min-h-64" />
-      </div>
-
-      {/* Row 2: remaining three */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <ProjectCard project={PROJECTS[1]} />
-        <ProjectCard project={PROJECTS[2]} />
-        <ProjectCard project={PROJECTS[3]} />
-      </div>
-    </section>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Personal projects
-// ---------------------------------------------------------------------------
-
-function ProjectRow({ project }: { project: (typeof PERSONAL_PROJECTS)[0] }) {
+function ProjectRow({ project }: { project: ProjectEntry }) {
   return (
     <div>
-      {/* Role label above both columns so name and desc start on the same plane */}
       <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-4">
         {project.role}
+        {project.company && (
+          <span className="text-gray-300"> · {project.company}</span>
+        )}
       </p>
-
-      {/* Name */}
       <h3
         className="font-medium tracking-tight leading-none text-gray-900 mb-5"
         style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}
       >
         {project.name}
       </h3>
-
-      {/* Description — left border signals this is the project summary */}
       <div className="border-l-2 border-gray-200 pl-5 mb-8 max-w-2xl">
         <p className="text-sm text-gray-500 leading-relaxed">{project.desc}</p>
       </div>
-
-      {/* Highlights + tags — full width */}
       <div className="flex flex-col gap-2 mb-6">
         {project.highlights.map(({ label, text }) => (
           <div key={label} className="flex gap-4">
@@ -438,16 +407,50 @@ function ProjectRow({ project }: { project: (typeof PERSONAL_PROJECTS)[0] }) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Selected work
+// ---------------------------------------------------------------------------
+
+function BentoGrid() {
+  return (
+    <section id="work" className="max-w-6xl mx-auto px-6 pb-28">
+      <div className="flex items-center gap-5 mb-6">
+        <p className="font-mono text-gray-300 leading-none shrink-0" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>01</p>
+        <div className="flex-1 border-t-2 border-gray-200" />
+      </div>
+      <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-6">
+        Selected work
+      </p>
+      <div>
+        {PROJECTS.map((project, i) => (
+          <div key={project.id}>
+            {i > 0 && <div className="border-t border-gray-100 my-10 md:my-14" />}
+            <ProjectRow project={project} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Personal projects
+// ---------------------------------------------------------------------------
+
 function PersonalProjects() {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-6 pb-16">
+      <div className="flex items-center gap-5 mb-6">
+        <p className="font-mono text-gray-300 leading-none shrink-0" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>02</p>
+        <div className="flex-1 border-t-2 border-gray-200" />
+      </div>
       <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-6">
         Projects
       </p>
       <div>
         {PERSONAL_PROJECTS.map((project, i) => (
           <div key={project.id}>
-            {i > 0 && <div className="border-t border-gray-100 my-16 md:my-24" />}
+            {i > 0 && <div className="border-t border-gray-100 my-10 md:my-14" />}
             <ProjectRow project={project} />
           </div>
         ))}
@@ -463,6 +466,10 @@ function PersonalProjects() {
 function Stack() {
   return (
     <section id="stack" className="max-w-6xl mx-auto px-6 pb-16">
+      <div className="flex items-center gap-5 mb-6">
+        <p className="font-mono text-gray-300 leading-none shrink-0" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>03</p>
+        <div className="flex-1 border-t-2 border-gray-200" />
+      </div>
       <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-6">
         Stack
       </p>
@@ -502,6 +509,10 @@ function Stack() {
 function Experience() {
   return (
     <section id="experience" className="max-w-6xl mx-auto px-6 pb-16">
+      <div className="flex items-center gap-5 mb-6">
+        <p className="font-mono text-gray-300 leading-none shrink-0" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}>04</p>
+        <div className="flex-1 border-t-2 border-gray-200" />
+      </div>
       <p className="text-xs font-mono tracking-widest text-gray-400 uppercase mb-6">
         Experience
       </p>
@@ -597,8 +608,8 @@ function Footer() {
           <div className="flex flex-col gap-2.5">
             {[
               { label: 'Work',       href: '#work' },
-              { label: 'Stack',      href: '#stack' },
               { label: 'Projects',   href: '#projects' },
+              { label: 'Stack',      href: '#stack' },
               { label: 'Experience', href: '#experience' },
             ].map(({ label, href }) => (
               <a key={label} href={href} className="text-sm text-gray-500 hover:text-gray-900 transition-colors w-fit">
